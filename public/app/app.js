@@ -5,6 +5,3 @@ angular.module('app').config(function($routeProvider,$locationProvider){
     $routeProvider.when ('/',{templateUrl:'/partials/main',controller:'mainctrl'});
 });
 
-angular.module('app').controller('mainctrl',function($scope){
-    $scope.myVar ='Namaste Angular';
-});

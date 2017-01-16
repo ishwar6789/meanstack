@@ -39,14 +39,7 @@ var db = mongoose.connection;
 db.on('error',console.error.bind(console,'connection error'));
 db.once('open',function callback(){
 console.log("db opened");
-})
-var messageschema =mongoose.Schema({message:String});
-var Message = mongoose.model('Message',messageschema);
-var mongomongoose;
-Message.findOne().exec(function(err,messageDoc){
-    mongomongoose=messageDoc.message;
-})
-
+});
 //routing
 
 app.get('/partials/:partialPath',function(req,res){
@@ -55,7 +48,7 @@ app.get('/partials/:partialPath',function(req,res){
 
 
 app.get('*',function(req,res){
-    res.render('index',{mongomongoose:mongomongoose});
+    res.render('index');
 });
 var port = process.env.PORT || 3346;
 app.listen(port,function(){
