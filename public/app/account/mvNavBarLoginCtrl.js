@@ -1,6 +1,12 @@
-angular.module('app').controller('mvNavBarLoginCtrl',function($scope){
-
+angular.module('app').controller('myNavBarLoginCtrl',function($scope,$http){
 $scope.signin=function(username,password){
-    console.log("need to implement ");
+    $http.post('/login',{username:username,password:password}).then(function(response){
+        if(response.data.success){
+            console.log("loggedin");
+        }else{
+            console.log("incorrect password");
+        }
+
+    });
 }
 });

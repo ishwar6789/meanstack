@@ -9,4 +9,21 @@ db.once('open',function callback(){
 console.log("db opened");
 });
 
+var userSchema = mongoose.Schema({
+    firstName: String,
+    lastName:String,
+    userName:String
+});
+
+var User = mongoose.model('User',userSchema);
+User.find({}).exec(function(err,collection){
+if(collection.length ===0){
+User.create({firstName:'joe',lastName:'rozer',userName:'joe'});
+User.create({firstName:'john',lastName:'dash',userName:'john'});
+User.create({firstName:'Dan',lastName:'wall',userName:'danny'});
+
+}
+})
+
+
 }
