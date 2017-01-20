@@ -15,6 +15,14 @@ $http.post('/login',{username:username,password:password}).then(function(respons
     });
     return dfd.promise;
 
+    },
+    logoutUser: function() {
+        var dfd =$q.defer();
+        $http.post('/logout',{logout:true}).then(function   () {
+            mvIdentity.currentUser=undefined;
+            dfd.resolve();
+        }) ;
+        return dfd.promise;
     }
 }
 

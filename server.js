@@ -36,7 +36,7 @@ passport.serializeUser(function(user,done){
 
 passport.deserializeUser(function(id,done){
     User.findOne({_id:id}).exec(function(err,user){
-        if(user){
+        if(user && user.authenticate(password)){
             return done(null,user);
         }
         else{done(null,false);}
