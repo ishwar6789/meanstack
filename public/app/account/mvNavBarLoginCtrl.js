@@ -11,12 +11,11 @@ mvNotifier.notify('username / Password combination is incorrect');
 });
     
 }
-
 $scope.signout = function () {
     mvAuth.logoutUser().then(function(){
         $scope.username ="";
         $scope.password="";
-        myNotifier.notify('you have successfully signed out');
+        mvNotifier.notify('you have successfully signed out');
         $location.path('/');
     })
 }

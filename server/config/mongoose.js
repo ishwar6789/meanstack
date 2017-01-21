@@ -15,7 +15,8 @@ var userSchema = mongoose.Schema({
     lastName:String,
     userName:String,
     salt: String,
-    hashed_pwd:String
+    hashed_pwd:String,
+    roles:[String]
 });
 userSchema.methods={
 authenticate: function(passwordToMatch){
@@ -30,12 +31,12 @@ if(collection.length ===0){
     var salt,hash;
     salt=createSalt();
     hash=hashPwd(salt,'joe');
-User.create({firstName:'joe',lastName:'rozer',userName:'joe',salt:salt,hashed_pwd:hash});
+User.create({firstName:'joe',lastName:'rozer',userName:'joe',salt:salt,hashed_pwd:hash,roles:["admin"]});
 
     salt=createSalt();
     hash=hashPwd(salt,'john');
 
-User.create({firstName:'john',lastName:'dash',userName:'john',salt:salt,hashed_pwd:hash});
+User.create({firstName:'john',lastName:'dash',userName:'john',salt:salt,hashed_pwd:hash,roles:[]});
     salt=createSalt();
     hash=hashPwd(salt,'Dan');
 

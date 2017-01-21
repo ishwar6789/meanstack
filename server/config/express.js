@@ -19,9 +19,10 @@ app.set('view engine','jade');
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(bodyparser.json());
+app.use(session({secret:'multi vision unicorns',resave:false,saveUninitialized:false}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({secret:'multi vision unicorns',resave:false,saveUninitialized:false}));
+
 app.use(stylus.middleware(
 {
     src: config.rootPath+'/public',

@@ -1,7 +1,16 @@
 
 var auth = require('./auth');
+var mongoose = require('mongoose');
+User = mongoose.model('User');
 // routing configs 
 module.exports = function(app){
+
+app.get('/api/users', auth.requiresApiLogin,function(req,res){
+    User.find({}).exec(function(err,collection){
+        res.send(collection);
+    })
+
+});
 
 app.get('/partials/*',function(req,res){
     res.render('../../public/app/'+req.params[0]);
@@ -15,6 +24,9 @@ res.end();
 
 
 app.get('*',function(req,res){
-    res.render('index');
+    res.render('index',{
+        bootstrappedUser:req.user
+
+    });
 });
 }
